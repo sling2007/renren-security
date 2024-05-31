@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "da415dc9-272d-42f5-b258-07bfda80210d",
+		"name": "renren-security",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1557422"
+	},
+	"item": [
+		{
+			"name": "renren-api(simple, without  authority)",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mobile\":\"15201550002\",\r\n    \"password\":\"Marine.123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8081/renren-api/api/login"
+					},
+					"response": []
+				},
+				{
+					"name": "regist",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nickName\":\"user001\",\r\n    \"mobile\":\"15201550123\",\r\n    \"password\":\"Marine.123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8081/renren-api/api/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "renren-admin(web pages , with complex authority)",
+			"item": [
+				{
+					"name": "验证码",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/renren-admin/captcha?uuid=5537973d-589e-463d-bdfc-cb7fba6da4be",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"renren-admin",
+								"captcha"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "5537973d-589e-463d-bdfc-cb7fba6da4be"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "yewu业务接口测试1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "e4ef0c14712edf6158d135c29342ea85",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/renren-admin/sys/menu/nav?_t=1717136455329",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"renren-admin",
+								"sys",
+								"menu",
+								"nav"
+							],
+							"query": [
+								{
+									"key": "_t",
+									"value": "1717136455329"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "yewu业务接口测试2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "e4ef0c14712edf6158d135c29342ea85",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:8080/renren-admin/sys/menu/permissions"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"captcha\": \"rkyz7\",\r\n    \"uuid\": \"5537973d-589e-463d-bdfc-cb7fba6da4be\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/renren-admin/login"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "e4ef0c14712edf6158d135c29342ea85",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\",\r\n    \"captcha\": \"rkyz7\",\r\n    \"uuid\": \"5537973d-589e-463d-bdfc-cb7fba6da4be\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/renren-admin/logout"
+					},
+					"response": []
+				},
+				{
+					"name": "login-info(验证是否token还有效，用于其他系统的调用)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/renren-admin/login-info?token=e4ef0c14712edf6158d135c29342ea85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"renren-admin",
+								"login-info"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "e4ef0c14712edf6158d135c29342ea85"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
